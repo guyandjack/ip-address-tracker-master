@@ -1,0 +1,144 @@
+
+@font-face {
+    font-family: "Lato";
+    src: url("../../typographie/Lato-Regular.ttf") format("TrueType") tech(color-COLRv1),
+        
+}
+
+//reset style
+* {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+    font-family:  "Lato", "sans-serif";
+
+}
+
+//shared class
+.relative {
+    position: relative;
+}
+
+.flex-column-start-center {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.flex-row-center-center {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+//variables
+$gap : 20px;
+$heightpattern: 41%;
+$widthInput: 85%;
+
+
+//style sheet
+
+.page-container {
+    //border: 2px solid red;
+    width: 100%;
+
+}
+
+.main-container {
+    //border: 2px solid blue;
+    width: 100%;
+    height: 740px;
+}
+
+
+.container-pattern {
+    //border: 2px solid pink;
+    width: 100%;
+    height: $heightpattern;
+    background-image: url(../../../images/pattern-bg-mobile.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    & > h1 {
+        font-size: 1.8em;
+        color: white;
+    }
+
+}
+
+.container-input{
+    width: $widthInput;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.container-arrow{
+    width: 18%;
+    height: 100%;
+    background-image: url(../../../images/icon-arrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+
+}
+
+.input,
+.data-list {
+    width: $widthInput;
+    padding: 20px;
+    border-radius: 16px;
+    border: none;
+}
+
+.input{
+    font-size: 1.2em;
+    border-radius: 0px;
+    font-weight: bolder;
+   
+}
+
+.data-list {
+    justify-content: center;
+    //border: 2px solid green;
+    position: absolute;
+    top: $heightpattern;
+    transform: translateY(-45%);
+    gap:25px;
+    height:300px;
+    //padding: 0px;
+    background-color: white;
+}
+
+.list-item{
+
+    & > span {
+        font-size: 0.6em;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        font-weight: 600;
+        opacity: 0.5;
+        margin-bottom: 8px;
+        
+    }
+
+    & > p{
+        font-size: 1.5em;
+        font-weight:700;
+        text-transform: capitalize;
+        
+    }
+}
+
+
+.container-map {
+    width: 100%;
+    //height: 66%;
+}
