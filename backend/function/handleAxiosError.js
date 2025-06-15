@@ -5,24 +5,24 @@ function handleAxiosError(error) {
     if (error.response) {
       // Erreur côté serveur (ex: 401, 403, 500)
       console.error(
-        "Erreur HTTP :",
+        "Error HTTP :",
         error.response.status,
         error.response.statusText
       );
-      return `Erreur http, veuillez réessayer: ${error.response.statusText}`;
+      return `Error http: ${error.response.statusText}`;
     } else if (error.request) {
       // Aucune réponse (timeout, offline)
-      console.error("Pas de réponse du serveur :", error.request);
-      return `Pas de réponse du serveur, veuillez réessayer plus tard: ${error.message}`;
+      console.error(" No server response :", error.request);
+      return ` No server response: ${error.message}`;
     } else {
       // Erreur autre (mauvaise URL, etc.)
-      console.error("Erreur Axios :", error.message);
-      return `Erreur Axios : ${error.message}`;
+      console.error("Error Axios :", error.message);
+      return `Error Axios : ${error.message}`;
     }
   } else {
     // Erreur non Axios (ex: bug JS)
-    console.error("Erreur inconnue :", error);
-    return `Erreur inconnue, veuillez réessayer plus tard: ${error}`;
+    console.error("Unknow error :", error);
+    return `Unknow error: ${error}`;
   }
 }
 

@@ -1,0 +1,22 @@
+import { defineConfig } from "vite";
+import path from "path";
+
+export default defineConfig({
+  root: "index.html", // dossier racine du projet (optionnel si déjà à la racine)
+  server: {
+    open: true, // ouvre automatiquement dans le navigateur
+  },
+  build: {
+    outDir: "dist", // dossier de sortie après build
+  },
+  resolve: {
+    alias: {
+      "@function": path.resolve(__dirname, "/src/javascript/function"), // ex: @/style/css/index.css
+      "@leaflet": path.resolve(__dirname, "/src/javascript/leaflet-src.js"), // ex: @/style/css/index.css
+      "@styleCSS": path.resolve(__dirname, "/src/style/CSS"), // ex: @/style/css/index.css
+      "@styleSCSS": path.resolve(__dirname, "/src/style/SCSS"), // ex: @/style/css/index.css
+      "@typo": path.resolve(__dirname, "/src/style/typographie"), // ex: @/style/css/index.css
+      "@icon": path.resolve(__dirname, "/images/icon-location.svg"), // ex: @/style/css/index.css
+    },
+  },
+});

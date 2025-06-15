@@ -1,19 +1,9 @@
-//librairie import
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-
-//functions import
-import { checkDataUserInput } from "./function/checkDataUserInput";
-import { getInputValue } from "./function/getInputValue";
-import { showError } from "./function/showError";
-import { fetchApi } from "./function/fetchApi";
-import { getXY } from "./function/getXY";
-
-//variable globale
-let map;
 
 
-//function
+
+
+
+
 /**
  * Init map with the data from API
  *
@@ -64,43 +54,4 @@ function setMap(data = null) {
   markerLocation.bindPopup(textPopup).openPopup();
 }
 
-
-
-
-//fetch to geoApi after a click
-const arrowButton = document.querySelector(".container-arrow");
-if (arrowButton) {
-  arrowButton.addEventListener("click", async () => {
-    try {
-      let value = getInputValue("#ip");
-      let result = checkDataUserInput(value);
-      if (!result.isValid) {
-        showError(".toast", 3, "Enter a valid IP or domain");
-        return;
-      }
-
-      const dataApi = await fetchApi(result);
-      setMap(dataApi)
-      return;
-    } catch (error) {
-      console.log("EROOR:", error);
-    }
-  });
-}
-
-//fetch to geoApi when landing page is loaded
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const dataDefault = {
-      type: "ip",
-      isValid: true,
-      data: "8.8.8.8",
-    };
-
-   const dataApi = await fetchApi(dataDefault);
-   setMap(dataApi);
-    return;
-  } catch (error) {
-    console.log("EROOR:", error);
-  }
-});
+export {setMap}
