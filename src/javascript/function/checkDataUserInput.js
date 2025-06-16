@@ -10,8 +10,9 @@ function checkDataUserInput(data) {
     const pattern_ipV4 = /^(25[0-5]|2[0-4]\d|1?\d{1,2})(\.(25[0-5]|2[0-4]\d|1?\d{1,2})){3}$/g;
     //const pattern_ipV6 = /^[]$/g;
     const pattern_domain = /^(www\.)?[a-zA-Z0-9.-]+\.[a-z]{2,}$/g;
+    const pattern_neighbor = /^z\.z\.z\.z$/;
 ;
-    if (pattern_ipV4.test(dataString)) {
+    if (pattern_ipV4.test(dataString)|| pattern_neighbor.test(dataString)) {
 
         return {
             data: dataString,

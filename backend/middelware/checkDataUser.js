@@ -16,16 +16,24 @@ function checkDataUser(req, res, next) {
 
   const pattern_type = /^(ip|domain)$/g;
 
+  const pattern_neighbor = /^z\.z\.z\.z$/;
+
   if (
-    (pattern_ipV4.test(dataUser.data) || pattern_domain.test(dataUser.data)) &&
+    (
+      pattern_ipV4.test(dataUser.data) ||
+      pattern_domain.test(dataUser.data) ||
+      pattern_neighbor.test(dataUser.data)) &&
     pattern_type.test(dataUser.type) &&
     dataUser.isValid
   ) {
-    next()
-  }
-  else {
-    
-    res.status(400).json({"message":"User data unvalid!!"})
+    next();
+  } else {
+    console.log("user data no valid in middelware");
+    res.status(400).json({
+      status: 400,
+      statusText: "User data no valid",
+      message: "",
+    });
   }
   
 }

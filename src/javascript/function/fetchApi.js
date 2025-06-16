@@ -6,8 +6,7 @@ import { showError } from "./showError";
 //data import
 import { defaultData } from "../../data/data";
 
-//icon
-const emoj = "😟";
+
 
 
 
@@ -30,26 +29,22 @@ async function fetchApi(data) {
 
     const result = await response.json();
 
-    if (response.ok && result.status === "success") {
+    if (result.statusText === "success") {
       setLoader(false);
       displayData(result.data);
       return result.data
     } else {
       setLoader(false, 1);
       displayData(defaultData);
-      console.log("Error_message: ", result);
-      const errorMessage =
-        result.Error_message === "nocredit"
-          ? `${emoj} Crédit Balance null !`
-          : "Error 500";
-      showError(".toast", 5, errorMessage);
+      showError(".toast", 5, result.statusText);
+      
+      return defaultData
     }
-    return defaultData
   } catch (error) {
     console.log("Error request API: ", error);
-
     setLoader(false, 1);
     displayData(defaultData);
+    console.log("Error append: ", error.message)
     return defaultData;
   }
 }

@@ -37,9 +37,7 @@ app.use(cors(corsOptions));
 
 
 //only one route
-app.post("/requestinfo",
-    (req, res, next) => { checkDataUser(req, res, next) },
-    (req, res) => { getRequestInfo(req, res) });
+app.post("/requestinfo", checkDataUser, getRequestInfo);
 
 
 module.exports = app
