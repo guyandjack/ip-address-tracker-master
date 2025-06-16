@@ -2,6 +2,7 @@
 import { setLoader } from "./setLoader";
 import { displayData } from "./displayData";
 import { showError } from "./showError";
+import {localOrProd} from "./localOrProd"
 
 //data import
 import { defaultData } from "../../data/data";
@@ -19,7 +20,9 @@ async function fetchApi(data) {
   try {
     setLoader(true);
 
-    const response = await fetch("http://localhost:4000/requestinfo", {
+    const urlApi = localOrProd();
+
+    const response = await fetch(urlApi, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

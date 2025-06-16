@@ -2,12 +2,20 @@ import { defineConfig } from "vite";
 import path from "path";
 
 export default defineConfig({
-  root: "index.html", // dossier racine du projet (optionnel si déjà à la racine)
+  // dossier racine du projet (optionnel si déjà à la racine)
   server: {
     open: true, // ouvre automatiquement dans le navigateur
   },
   build: {
-    outDir: "dist", // dossier de sortie après build
+    outDir: "dist",
+    build: {
+      rollupOptions: {
+        input: {
+          // Landing page
+          main: "index.html",
+        },
+      },
+    }, // dossier de sortie après build
   },
   resolve: {
     alias: {
