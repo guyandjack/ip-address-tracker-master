@@ -10,6 +10,9 @@ import { showError } from "./javascript/function/showError";
 import { fetchApi } from "./javascript/function/fetchApi";
 import { getXY } from "./javascript/function/getXY";
 
+//import des icons
+import  icon_location  from "./images/icon-location.svg";
+
 
 //variable globale
 
@@ -19,8 +22,7 @@ let markerLocation = null;
 
 //option for personnal icon
 const iconLocation = L.icon({
-  iconUrl: "./src/images/icon-location.svg",
-
+ icon_location,
   iconSize: [40, 50], // size of the icon
   iconAnchor: [22, -94], // point of the icon which will correspond to marker's location
   popupAnchor: [-5, 76], // point from which the popup should open relative to the iconAnchor
