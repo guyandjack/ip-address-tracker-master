@@ -22,7 +22,7 @@ async function fetchApi(data) {
 
     const urlApi = localOrProd();
 
-    const response = await fetch(urlApi, {
+    const response = await fetch(`${urlApi}/requestinfo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

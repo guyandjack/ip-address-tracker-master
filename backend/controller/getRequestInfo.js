@@ -18,7 +18,7 @@ async function getRequestInfo(req, res) {
     //get ip user
     const ipClient = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
     if (req.body.data === "8.8.8.8" || req.body.data === "z.z.z.z") {
-      req.body.data = ipClient
+      req.body.data = ipClient[0]
     }
     const type = req.body.type;
     const data = req.body.data;
