@@ -9,6 +9,10 @@ function localOrProd() {
   const urlDev = import.meta.env.VITE_URL_API_DEV || null;
   const urlProd = import.meta.env.VITE_URL_API_PROD || null;
 
+  console.log("mode:", mode);
+  console.log("urldev:", urlDev);
+  console.log("urlprod:", urlProd);
+
   if (!urlDev || !urlProd) {
     console.warn("no environement variable ");
     return null;

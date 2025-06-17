@@ -4,11 +4,11 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 //functions import
-import { checkDataUserInput } from "@function/checkDataUserInput";
-import { getInputValue } from "@function/getInputValue";
-import { showError } from "@function/showError";
-import { fetchApi } from "@function/fetchApi";
-import { getXY } from "@function/getXY";
+import { checkDataUserInput } from "./javascript/function/checkDataUserInput";
+import { getInputValue } from "./javascript/function/getInputValue";
+import { showError } from "./javascript/function/showError";
+import { fetchApi } from "./javascript/function/fetchApi";
+import { getXY } from "./javascript/function/getXY";
 
 
 //variable globale
