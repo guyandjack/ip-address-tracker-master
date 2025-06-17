@@ -1,38 +1,33 @@
-
 //librairie import
 const axios = require("axios");
 const dotenv = require("dotenv");
 const path = require("path");
 dotenv.config({ path: path.join(__dirname, ".env") });
 
-
 //function import
 const handleAxiosError = require("../function/handleAxiosError");
 const getClientIp = require("../function/getClientIp");
 
-
 //data
 const { apiListErrors, mockUpApi } = require("../data/apiListError");
-
-
-
 
 async function getRequestInfo(req, res) {
   try {
     let ipClient = null;
     //get ip user for display data user place
     if (req.body.data === "8.8.8.8" || req.body.data === "z.z.z.z") {
-       ipClient = getClientIp(req);
+      ipClient = getClientIp(req);
       if (!ipClient) {
-        res.status(400).json({ status: 450, statusText: "Invalid ip client", message: "" });
-        return
+        res
+          .status(400)
+          .json({ status: 450, statusText: "Invalid ip client", message: "" });
+        return;
       }
-    }
-    else {
+    } else {
       ipClient = req.body.data;
     }
     const type = req.body.type;
-    const data = ipClient === "::1"? "8.8.8.8": ipClient;
+    const data = ipClient === "::1" ? "8.8.8.8" : ipClient;
     const key = process.env.IPFY_API_KEY;
 
     console.log("data ip for request:", data);
@@ -49,12 +44,12 @@ async function getRequestInfo(req, res) {
       timeout: 10000,
     });
 
-      res.status(200).json({
+    res.status(200).json({
       status: 200,
       statusText: "success",
       message: "",
       data: response.data,
-    }); 
+    });
   } catch (e) {
     const errorMessage = handleAxiosError(e);
     console.log("error message in getRequestInfo: ", errorMessage);
@@ -66,31 +61,22 @@ async function getRequestInfo(req, res) {
     };
 
     for (let i = 0; i < apiListErrors.length; i++) {
-      const listedError = apiListErrors[i];
-      const is5xxMatch =
-        typeof listedError.status === "string" &&
-        listedError.status === "5XX" &&
-        errorMessage.status >= 500;
-
-      if (listedError.status === errorMessage.status || is5xxMatch) {
-        errorFounded = {
-          status: listedError.status,
-          statusText: listedError.statusText,
-          message: listedError.message,
-        };
-        break;
+      if (apiListErrors[i].status === errorMessage.status) {
+        errorFounded.status = apiListErrors[i].status;
+        errorFounded.statusText = apiListErrors[i].statusText;
+        errorFounded.message = apiListErrors[i].message;
+        break
       }
     }
 
     if (!errorFounded.status) {
-      errorFounded.status = errorMessage.status || 500;
+      errorFounded.status = errorMessage.status;
       errorFounded.statusText = "Unknown Error";
       errorFounded.message = errorMessage.message || "Unexpected error";
     }
 
-    
     if (!res.headersSent) {
-      console.log("error object sended: ", errorFounded)
+      console.log("error object sended: ", errorFounded);
       res.status(errorFounded.status).json(errorFounded);
     }
   }

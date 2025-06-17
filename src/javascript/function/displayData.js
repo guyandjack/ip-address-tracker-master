@@ -3,7 +3,7 @@
  *
  * @param {object} data Object data from api
  */
-function displayData(data = null) {
+function displayData(data) {
   //dom element reference
   const divIp = document.querySelector("#item-ip");
   const divLocation = document.querySelector("#item-location");

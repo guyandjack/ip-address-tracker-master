@@ -31,11 +31,12 @@ async function fetchApi(data) {
     });
 
     const result = await response.json();
+    console.log("result in fetch API: ", result)
 
     if (result.statusText === "success") {
       setLoader(false);
-      displayData(result);
-      return result
+      displayData(result.data);
+      return result.data
     } else {
       setLoader(false, 1);
       displayData(defaultData);

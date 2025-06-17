@@ -47,15 +47,11 @@ function showNeighbor(data) {
   const ip2 = [detail.lat, detail.lng]; 
 
   // Ajouter les marqueurs
-  const markerHome = L.marker(ip1, {
-    icon: iconLocation,
-  })
+  const markerHome = L.marker(ip1)
     .addTo(map)
     .bindPopup("Hello neighbor, it's my quiet place for coding")
     .openPopup();
-  const markerNeighbor = L.marker(ip2, {
-    icon: iconLocation,
-  })
+  const markerNeighbor = L.marker(ip2)
     .addTo(map)
     .bindPopup("You must be around here");
   
@@ -85,9 +81,8 @@ function showNeighbor(data) {
  *
  * @param {object} data object data from response API
  */
-function setMap(data = null) {
-  const personnalTextPopup = "My quiet place for coding...";
-  const neigborhTextPopup = "Your place to code";
+function setMap(data) {
+  
   const useTextPopup = "It seems to be here";
 
   //get longitude and latitude
@@ -139,6 +134,39 @@ const arrowButton = document.querySelector(".container-arrow");
 if (arrowButton) {
   arrowButton.addEventListener("click", async () => {
     try {
+      let value = getInputValue("#ip");
+      let result = checkDataUserInput(value);
+      if (!result.isValid) {
+        showError(".toast", 3, "Enter a valid IP or domain");
+        return;
+      }
+
+      const dataApi = await fetchApi(result);
+      if (!dataApi) {
+        showError(".toast", 5, "No data to display");
+        return
+      }
+      if (value === "z.z.z.z") {
+        showNeighbor(dataApi);
+      } else {
+        
+        setMap(dataApi);
+        
+      }
+    } catch (error) {
+      console.log("EROOR:", error);
+    }
+  });
+}
+//fetch to geoApi after press enter key
+const input = document.querySelector(".input");
+if (input) {
+  input.addEventListener("keydown", async (event) => {
+    try {
+      if (event.key !== "Enter") {
+        return
+      }
+      console.log("enter key presssed")
       let value = getInputValue("#ip");
       let result = checkDataUserInput(value);
       if (!result.isValid) {
