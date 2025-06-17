@@ -18,7 +18,7 @@ app.use(express.json({ limit: "10kb" }));
 // Configure CORS options
 const corsOptions = {
   origin: function (origin, callback) {
-    const allowedOrigins = ["http://localhost:5173"];
+    const allowedOrigins = ["http://localhost:5173","https://ip-address-tracker-master-lq4x.onrender.com"];
 
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true); // autorise les requêtes sans origin (ex: mobile, curl)
