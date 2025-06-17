@@ -19,8 +19,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@function": path.resolve(__dirname, "/src/javascript/function"), // ex: @/style/css/index.css
-      "@leaflet": path.resolve(__dirname, "/src/javascript/leaflet-src.js"), // ex: @/style/css/index.css
+      "@function": path.resolve(__dirname, "/javascript/function"), // ex: @/style/css/index.css
       "@styleCSS": path.resolve(__dirname, "/src/style/CSS"), // ex: @/style/css/index.css
       "@styleSCSS": path.resolve(__dirname, "/src/style/SCSS"), // ex: @/style/css/index.css
       "@typo": path.resolve(__dirname, "/src/style/typographie"), // ex: @/style/css/index.css
