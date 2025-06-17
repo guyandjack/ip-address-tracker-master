@@ -32,7 +32,7 @@ function handleAxiosError(error) {
     // Erreur non Axios (ex: bug JS)
     console.error("Unknow error :", error);
     return {
-      status: error.code || "Unknow",
+      status: error.code || 555,
       message: error.message || "Unknow error"
     };
   }

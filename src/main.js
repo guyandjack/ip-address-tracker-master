@@ -19,7 +19,7 @@ let markerLocation = null;
 
 //option for personnal icon
 const iconLocation = L.icon({
-  iconUrl: "images/icon-location.svg",
+  iconUrl: "./src/images/icon-location.svg",
 
   iconSize: [40, 50], // size of the icon
   iconAnchor: [22, -94], // point of the icon which will correspond to marker's location

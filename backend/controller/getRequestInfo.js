@@ -19,12 +19,20 @@ const { apiListErrors, mockUpApi } = require("../data/apiListError");
 
 async function getRequestInfo(req, res) {
   try {
-    //get ip user
+    let ipClient = null;
+    //get ip user for display data user place
     if (req.body.data === "8.8.8.8" || req.body.data === "z.z.z.z") {
-      req.body.data = getClientIp(req);
+       ipClient = getClientIp(req);
+      if (!ipClient) {
+        res.status(400).json({ status: 450, statusText: "Invalid ip client", message: "" });
+        return
+      }
+    }
+    else {
+      ipClient = req.body.data;
     }
     const type = req.body.type;
-    const data = req.body.data;
+    const data = ipClient === "::1"? "8.8.8.8": ipClient;
     const key = process.env.IPFY_API_KEY;
 
     console.log("data ip for request:", data);

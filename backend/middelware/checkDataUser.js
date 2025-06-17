@@ -8,6 +8,15 @@
 function checkDataUser(req, res, next) {
   
   const dataUser = req.body;
+  if (!dataUser.type || !dataUser.data) {
+    console.log("user data no found");
+    res.status(400).json({
+      status: 400,
+      statusText: "User data no found",
+      message: "",
+    });
+    return
+  }
 
   const pattern_ipV4 =
     /^(25[0-5]|2[0-4]\d|1?\d{1,2})(\.(25[0-5]|2[0-4]\d|1?\d{1,2})){3}$/g;
@@ -23,10 +32,11 @@ function checkDataUser(req, res, next) {
       pattern_ipV4.test(dataUser.data) ||
       pattern_domain.test(dataUser.data) ||
       pattern_neighbor.test(dataUser.data)) &&
-    pattern_type.test(dataUser.type) &&
-    dataUser.isValid
+      pattern_type.test(dataUser.type) &&
+      dataUser.isValid
   ) {
     next();
+    return
   } else {
     console.log("user data no valid in middelware");
     res.status(400).json({
@@ -34,6 +44,7 @@ function checkDataUser(req, res, next) {
       statusText: "User data no valid",
       message: "",
     });
+    return
   }
   
 }

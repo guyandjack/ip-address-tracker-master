@@ -85,7 +85,7 @@ $breakPoint: 768px;
     //border: 2px solid pink;
     width: 100%;
     height: $heightPatternMobile;
-    background-image: url(../../../images/pattern-bg-mobile.png);
+    background-image: url(../../images/pattern-bg-mobile.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -98,7 +98,7 @@ $breakPoint: 768px;
     }
 
     @media screen and (min-width: $breakPoint) {
-        background-image: url(../../../images/pattern-bg-desktop.png);
+        background-image: url(../../images/pattern-bg-desktop.png);
         height: $heightPattern;
 
         &>h1 {
@@ -126,7 +126,7 @@ $breakPoint: 768px;
 .container-arrow {
     width: 18%;
     height: 100%;
-    background-image: url(../../../images/icon-arrow.svg);
+    background-image: url(../../images/icon-arrow.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-color: black;
