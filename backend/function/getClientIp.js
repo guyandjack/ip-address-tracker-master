@@ -12,7 +12,7 @@ function getClientIp(req) {
    if (xForwardedFor) {
     // x-forwarded-for can contain many "IP" ;
     const ipList = xForwardedFor.split(",").map((ip) => ip.replace(/^::ffff:/, "").trim());
-    const clientIp = ipList[0];
+    const clientIp = ipList.pop();
 
      if (pattern_ipV4.test(clientIp)  ) {
       return clientIp;
