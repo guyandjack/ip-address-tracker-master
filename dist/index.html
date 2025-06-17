@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32-DQjEQYWa.png">
+
+  <title>Frontend Mentor | IP Address Tracker</title>
+
+
+
+  <script type="module" crossorigin src="/assets/index-C52uFH_U.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Cd8wzknB.css">
+</head>
+
+<body>
+  <div class="flex-column-start-center page-container">
+
+    <main class="relative flex-column-start-center main-container">
+      <div class="relative flex-column-start-center container-pattern">
+        <div class="toast"></div>
+        <h1>IP Address Tracker</h1>
+        <label for="ip"></label>
+        <div class="relative flex-row-center-center container-input">
+          <input class="input" id="ip" type="text" name="ip" placeholder="Format 159.253.63.21 or example.com">
+          <div class="container-arrow"></div>
+          <div class="loader"></div>
+        </div>
+        
+
+      </div>
+      <div id="map" class="container-map">
+
+      </div>
+
+
+      <ul class="flex-column-start-center data-list">
+        <li class="flex-column-start-center list-item ">
+          <span>ip address</span>
+          <p id="item-ip">192.212.256.23</p>
+        </li>
+        <li class="flex-column-start-center list-item split">
+          <span>location</span>
+          <p id="item-location">broklyn, NY 1001</p>
+        </li>
+        <li class="flex-column-start-center list-item split">
+          <span>timezone</span>
+          <p id="item-time">UTC-22:45</p>
+        </li>
+        <li class="flex-column-start-center list-item split">
+          <span>isp</span>
+          <p id="item-isp">SpaceX Starlink</p>
+        </li>
+
+      </ul>
+
+    </main>
+    <footer class="flex-column-start-center footer">
+
+       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"><span>Challenge by</span> Frontend Mentor.</a>
+       <a href="#"><span>Coded by</span> Your Name Here.</a>
+ 
+    </footer>
+
+  </div>
+</body>
+
+</html>
