@@ -49,14 +49,19 @@ function showNeighbor(data) {
   const ip2 = [detail.lat, detail.lng]; 
 
   // Ajouter les marqueurs
-  const markerHome = L.marker(ip1)
+  const markerHome = L.marker(ip1, {
+    icon: iconLocation,
+  })
     .addTo(map)
     .bindPopup("Hello neighbor, it's my quiet place for coding")
     .openPopup();
-  const markerNeighbor = L.marker(ip2)
+  const markerNeighbor = L.marker(ip2, {
+    icon: iconLocation,
+  })
     .addTo(map)
     .bindPopup("You must be around here");
-
+  
+   
   // Tracer une ligne entre les deux IP
   const line = L.polyline([ip1, ip2], { color: "blue" }).addTo(map);
 
