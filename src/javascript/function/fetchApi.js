@@ -34,8 +34,8 @@ async function fetchApi(data) {
 
     if (result.statusText === "success") {
       setLoader(false);
-      displayData(result.data);
-      return result.data
+      displayData(result);
+      return result
     } else {
       setLoader(false, 1);
       displayData(defaultData);

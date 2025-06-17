@@ -20,10 +20,7 @@ function displayData(data = null) {
   //display content
   if (divIp) divIp.textContent = ipAdress;
   if (divLocation) divLocation.textContent = `${city}, ${postalCode}`;
-  if (divTime)
-    divTime.textContent = `UTC${
-      timeZone.startsWith("-") ? "" : "+ "
-    }${timeZone}`;
+  if (divTime) divTime.textContent = `UTC ${timeZone}`;
   if (divIsp) divIsp.textContent = isp;
 }
 
