@@ -8,6 +8,10 @@ dotenv.config({ path: path.join(__dirname, ".env") });
 
 //function import
 const handleAxiosError = require("../function/handleAxiosError");
+const getClientIp = require("../function/getClientIp");
+
+
+//data
 const { apiListErrors, mockUpApi } = require("../data/apiListError");
 
 
@@ -16,9 +20,8 @@ const { apiListErrors, mockUpApi } = require("../data/apiListError");
 async function getRequestInfo(req, res) {
   try {
     //get ip user
-    const ipClient = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
     if (req.body.data === "8.8.8.8" || req.body.data === "z.z.z.z") {
-      req.body.data = ipClient[0]
+      req.body.data = getClientIp(req);
     }
     const type = req.body.type;
     const data = req.body.data;
