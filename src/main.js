@@ -16,6 +16,10 @@ import { getXY } from "./javascript/function/getXY";
 let map = null;
 let markerLocation = null;
 
+let markerHome = null;
+let markerNeighbor = null;
+let line = null;
+
 //option for personnal icon
 const iconLocation = L.icon({
   iconUrl: "/icon-location.svg",
@@ -47,17 +51,17 @@ function showNeighbor(data) {
   const ip2 = [detail.lat, detail.lng]; 
 
   // Ajouter les marqueurs
-  const markerHome = L.marker(ip1)
+   markerHome = L.marker(ip1)
     .addTo(map)
     .bindPopup("Hello neighbor, it's my quiet place for coding")
     .openPopup();
-  const markerNeighbor = L.marker(ip2)
+  markerNeighbor = L.marker(ip2)
     .addTo(map)
     .bindPopup("You must be around here");
   
    
   // Tracer une ligne entre les deux IP
-  const line = L.polyline([ip1, ip2], { color: "blue" }).addTo(map);
+  line = L.polyline([ip1, ip2], { color: "blue" }).addTo(map);
 
   // Ajuster la vue pour tout voir
   map.fitBounds(line.getBounds());
@@ -91,6 +95,9 @@ function setMap(data) {
   //if a instance of map existe we use it
   if (map) {
     console.log("map instance detected !");
+    if (markerHome) markerHome.remove();
+    if (markerNeighbor) markerNeighbor.remove();
+    if (line) line.remove();
 
     map.setView([detail.lat, detail.lng], 16);
 
@@ -110,10 +117,6 @@ function setMap(data) {
     );
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "&copy; OpenStreetMap contributors",
-    }).addTo(map);
-
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution:
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
