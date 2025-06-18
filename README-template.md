@@ -48,18 +48,31 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ## My process
 
+- front end responsive design
+- api with express js
+- test api with postman
+- add new features on api
+- front end script (fetch, update map, display data from api....)
+- dev test
+- deploy on render
+- test and update
+
+
+
 ### Built with
 
+#front end
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- vanilla js
+- vite
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+#backend
+- node js / express js
+- axios, cors, nodemon, dotenv
+
 
 ### What I learned
 

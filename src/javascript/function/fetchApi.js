@@ -2,7 +2,8 @@
 import { setLoader } from "./setLoader";
 import { displayData } from "./displayData";
 import { showError } from "./showError";
-import {localOrProd} from "./localOrProd"
+import { localOrProd } from "./localOrProd";
+import { enableOrDisableElement } from "./enableOrdisableElement.js";
 
 //data import
 import { defaultData } from "../../data/data";
@@ -19,6 +20,7 @@ import { defaultData } from "../../data/data";
 async function fetchApi(data) {
   try {
     setLoader(true);
+    enableOrDisableElement(true, [".input", ".container-arrow"]);
 
     const urlApi = localOrProd();
 
@@ -35,10 +37,12 @@ async function fetchApi(data) {
 
     if (result.statusText === "success") {
       setLoader(false);
+      enableOrDisableElement(false,[".input",".container-arrow"],1)
       displayData(result.data);
       return result.data
     } else {
       setLoader(false, 1);
+      enableOrDisableElement(false,[".input",".container-arrow"],1)
       displayData(defaultData);
       showError(".toast", 5, result.statusText);
       
@@ -47,6 +51,7 @@ async function fetchApi(data) {
   } catch (error) {
     console.log("Error request API: ", error);
     setLoader(false, 1);
+    enableOrDisableElement(false,[".input",".container-arrow"],1)
     displayData(defaultData);
     console.log("Error append: ", error.message)
     return defaultData;

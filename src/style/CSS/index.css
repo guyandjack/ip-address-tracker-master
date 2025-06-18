@@ -122,6 +122,12 @@
   background-repeat: no-repeat;
   background-color: black;
   cursor: pointer;
+  -webkit-transition: background-color linear 0.2s;
+  transition: background-color linear 0.2s;
+  border: none;
+}
+.container-arrow[disabled] {
+  background-color: lightgray;
 }
 
 @-webkit-keyframes loader {
@@ -244,7 +250,7 @@
   outline: none;
 }
 
-.input[readonly] {
+.input[disabled] {
   color: lightgray;
 }
 

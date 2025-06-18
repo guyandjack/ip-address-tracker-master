@@ -133,7 +133,14 @@ $breakPoint: 768px;
     background-repeat: no-repeat;
     background-color: black;
     cursor: pointer;
+    transition: background-color linear 0.2s;
+    border: none;
 
+    &[disabled]{
+        background-color: lightgray;
+    }
+    
+    
 }
 
 @keyframes loader {
@@ -227,7 +234,7 @@ $breakPoint: 768px;
     outline: none;
 }
 
-.input[readonly] {
+.input[disabled] {
     color: lightgray;
 }
 
