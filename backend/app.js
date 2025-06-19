@@ -20,7 +20,7 @@ const corsOptions = {
     const allowedOrigins = [
       "http://localhost:5173",
       "https://ip-address-tracker-master-lq4x.onrender.com",
-      "https://ip-address-tracker-master-hazel.vercel.app/",
+      "https://ip-address-tracker-master-hazel.vercel.app",
     ];
 
     if (!origin || allowedOrigins.includes(origin)) {
